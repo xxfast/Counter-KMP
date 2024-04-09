@@ -1,5 +1,7 @@
 package io.github.xxfast.counter.android.screens.timer
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -7,9 +9,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
 import app.cash.molecule.RecompositionMode
 import app.cash.molecule.launchMolecule
 import io.github.xxfast.counter.screens.timer.TimerDomain
+import io.github.xxfast.counter.screens.timer.TimerState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.StateFlow
 
@@ -17,19 +21,19 @@ import kotlinx.coroutines.flow.StateFlow
 fun TimerScreen() {
   val coroutineScope: CoroutineScope = rememberCoroutineScope()
 
-  val stateFlow: StateFlow<Int> = remember {
+  val stateFlow: StateFlow<TimerState> = remember {
     coroutineScope.launchMolecule(RecompositionMode.ContextClock) { TimerDomain() }
   }
 
-  val seconds: Int by stateFlow.collectAsState()
+  val state: TimerState by stateFlow.collectAsState()
 
-  TimerView(seconds = seconds)
+  TimerView(state = state)
 }
 
 @Composable
-fun TimerView(seconds: Int) {
+fun TimerView(state: TimerState) {
   Text(
-    text = "${seconds}s",
+    text = "${state.minutes}m ${state.seconds}s",
     style = MaterialTheme.typography.displayLarge
   )
 }
