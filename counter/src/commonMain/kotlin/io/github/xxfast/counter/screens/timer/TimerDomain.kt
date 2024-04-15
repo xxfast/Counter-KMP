@@ -15,25 +15,27 @@ data class TimerState(
 )
 
 @Composable
-fun TimerDomain(state: TimerState = TimerState()): TimerState {
-  var minutes: Int by remember { mutableStateOf(state.minutes) }
-  var seconds: Int by remember { mutableStateOf(state.seconds) }
+fun TimerDomain(seed: TimerState = TimerState()): TimerState {
+  var state: TimerState by remember { mutableStateOf(seed) }
 
-  LaunchedEffect(Unit){
+  LaunchedEffect(Unit) {
     while (true) {
       delay(1.seconds)
-      when {
-        seconds > 0 -> seconds--
-        minutes > 0 -> {
-          minutes--
+
+      state = when {
+        state.minutes > 0 -> state.copy(
+          minutes = state.minutes - 1,
           seconds = 59
-        }
+        )
+
+        state.seconds > 0 -> state.copy(
+          seconds = state.seconds - 1
+        )
+
+        else -> break
       }
     }
   }
 
-  return TimerState(
-    minutes = minutes,
-    seconds = seconds,
-  )
+  return state
 }
