@@ -1,4 +1,4 @@
-package io.github.xxfast.counter.timer
+package io.github.xxfast.counter.screens.timer
 
 import app.cash.molecule.RecompositionMode
 import app.cash.molecule.moleculeFlow
