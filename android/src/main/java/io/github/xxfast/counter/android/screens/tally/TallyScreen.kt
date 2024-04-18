@@ -10,6 +10,9 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Refresh
@@ -25,9 +28,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomEnd
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.cash.molecule.RecompositionMode
 import app.cash.molecule.launchMolecule
@@ -70,19 +75,19 @@ fun TallyView(
     with(state) { listOf(thousands, hundreds, tens, ones) }
   }
 
-  Card(
-    onClick = onIncrease,
-    modifier = Modifier
-  ) {
-    Box(modifier = Modifier.size(180.dp)) {
+  Card(onClick = onIncrease) {
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      modifier = Modifier.fillMaxWidth().padding(16.dp)
+    ) {
       ProvideTextStyle(MaterialTheme.typography.displayMedium) {
-        Row(modifier = Modifier.align(Center)) {
+        Row {
           numbers.forEach { number ->
             AnimatedContent(
               targetState = number,
               transitionSpec = {
-                slideInVertically { it } + fadeIn() + scaleIn() togetherWith
-                    slideOutVertically { -it } + fadeOut() + scaleOut()
+                slideInVertically { -it } + fadeIn() + scaleIn() togetherWith
+                    slideOutVertically { it } + fadeOut() + scaleOut()
               },
               label = "slide"
             ) {
@@ -90,12 +95,23 @@ fun TallyView(
             }
           }
         }
-      }
 
+        Spacer(modifier = Modifier.weight(1f))
 
-      IconButton(onClick = onReset, modifier = Modifier.align(BottomEnd)) {
-        Icon(Icons.Rounded.Refresh, null)
+        IconButton(onClick = onReset) {
+          Icon(Icons.Rounded.Refresh, null)
+        }
       }
     }
   }
+}
+
+@Preview
+@Composable
+fun TallyPreview() {
+  TallyView(
+    state = TallyState(3, 4, 3, 5),
+    onIncrease = {},
+    onReset = {}
+  )
 }
