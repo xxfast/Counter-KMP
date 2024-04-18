@@ -19,7 +19,7 @@ data class TallyState(
 
 sealed interface TallyEvents {
   data object Increase : TallyEvents
-  data class Reset(val turns: Int) : TallyEvents
+  data object Reset : TallyEvents
 }
 
 @Composable
@@ -30,7 +30,7 @@ fun TallyDomain(events: EventsFlow<TallyEvents> = EventsFlow()): TallyState {
     events.collect { event ->
       when (event) {
         Increase -> count++
-        is Reset -> count = 0
+        Reset -> count = 0
       }
     }
   }

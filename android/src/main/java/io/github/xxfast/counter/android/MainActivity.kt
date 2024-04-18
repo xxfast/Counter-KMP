@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import io.github.xxfast.counter.android.screens.timer.TimerScreen
 
 class MainActivity : ComponentActivity() {
+  @OptIn(ExperimentalMaterial3Api::class)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     enableEdgeToEdge(SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT))
@@ -25,11 +26,24 @@ class MainActivity : ComponentActivity() {
           modifier = Modifier.fillMaxSize(),
           color = MaterialTheme.colorScheme.background
         ) {
-          Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier.fillMaxSize()
-          ) {
-            TimerScreen()
+          Scaffold(
+            topBar = {
+              LargeTopAppBar(
+                title = { Text(text = "Counter-KMP") }
+              )
+            }
+          ) { scaffoldPadding ->
+            LazyVerticalStaggeredGrid(
+              columns = StaggeredGridCells.Adaptive(180.dp),
+              verticalItemSpacing = 16.dp,
+              horizontalArrangement = Arrangement.spacedBy(16.dp),
+              contentPadding = PaddingValues(16.dp),
+              modifier = Modifier
+                .padding(scaffoldPadding)
+            ) {
+              item { TimerScreen() }
+              item { TallyScreen() }
+            }
           }
         }
       }
