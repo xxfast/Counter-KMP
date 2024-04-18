@@ -4,7 +4,13 @@ import SwiftUI
 struct iOSApp: App {
 	var body: some Scene {
 		WindowGroup {
-      TimerScreen()
+      NavigationStack {
+        List {
+          TimerScreen()
+          TallyScreen()
+        }
+        .navigationTitle("Counter-KMP")
+      }
 		}
 	}
 }

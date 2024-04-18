@@ -11,6 +11,9 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		DB0365AE2BC426F800840BCF /* TimerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0365AD2BC426F800840BCF /* TimerScreen.swift */; };
+		DBBAFFE12BD157B20091629C /* TallyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAFFE02BD157B20091629C /* TallyScreen.swift */; };
+		DBBAFFE42BD1583D0091629C /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAFFE32BD1583D0091629C /* TimerViewModel.swift */; };
+		DBBAFFE72BD159940091629C /* TallyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAFFE62BD159940091629C /* TallyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +36,9 @@
 		7555FF7B242A565900829871 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB0365AD2BC426F800840BCF /* TimerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerScreen.swift; sourceTree = "<group>"; };
+		DBBAFFE02BD157B20091629C /* TallyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyScreen.swift; sourceTree = "<group>"; };
+		DBBAFFE32BD1583D0091629C /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		DBBAFFE62BD159940091629C /* TallyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +80,7 @@
 		7555FF7D242A565900829871 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				DB0365AC2BC426E400840BCF /* screens */,
+				DB0365AC2BC426E400840BCF /* Screens */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
@@ -90,12 +96,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DB0365AC2BC426E400840BCF /* screens */ = {
+		DB0365AC2BC426E400840BCF /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				DBBAFFE52BD1597F0091629C /* Tally */,
+				DBBAFFE22BD157C80091629C /* Timer */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		DBBAFFE22BD157C80091629C /* Timer */ = {
 			isa = PBXGroup;
 			children = (
 				DB0365AD2BC426F800840BCF /* TimerScreen.swift */,
+				DBBAFFE32BD1583D0091629C /* TimerViewModel.swift */,
 			);
-			path = screens;
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		DBBAFFE52BD1597F0091629C /* Tally */ = {
+			isa = PBXGroup;
+			children = (
+				DBBAFFE02BD157B20091629C /* TallyScreen.swift */,
+				DBBAFFE62BD159940091629C /* TallyViewModel.swift */,
+			);
+			path = Tally;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,8 +219,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBBAFFE42BD1583D0091629C /* TimerViewModel.swift in Sources */,
+				DBBAFFE12BD157B20091629C /* TallyScreen.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				DB0365AE2BC426F800840BCF /* TimerScreen.swift in Sources */,
+				DBBAFFE72BD159940091629C /* TallyViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

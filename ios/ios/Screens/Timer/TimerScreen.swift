@@ -7,22 +7,6 @@
 //
 
 import SwiftUI
-import counter
-
-class TimerViewModel: ObservableObject {
-  @Published var minutes:Int = 0
-  @Published var seconds:Int = 0
-  
-  let domain = TimerDomain()
-  
-  init() {
-    domain.onState { [self] state in
-      self.minutes = Int(state.minutes)
-      self.seconds = Int(state.seconds)
-    }
-  }
-}
-
 
 struct TimerScreen: View {
   @ObservedObject var viewModel = TimerViewModel()
