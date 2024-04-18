@@ -11,7 +11,10 @@ import io.github.xxfast.counter.tally.TallyEvents.Reset
 import io.github.xxfast.counter.utils.EventsFlow
 
 data class TallyState(
-  val display: String
+  val thousands: Int,
+  val hundreds: Int,
+  val tens: Int,
+  val ones: Int,
 )
 
 sealed interface TallyEvents {
@@ -21,49 +24,21 @@ sealed interface TallyEvents {
 
 @Composable
 fun TallyDomain(events: EventsFlow<TallyEvents> = EventsFlow()): TallyState {
-  var digits: List<Int> by remember { mutableStateOf(listOf(0,0,0,0)) }
+  var count: Int by remember { mutableStateOf(0) }
 
   LaunchedEffect(Unit) {
     events.collect { event ->
-      when(event){
-        Increase -> {
-          var ones = digits[3]
-          var tens = digits[2]
-          var hundrands = digits[1]
-          var thousands = digits[0]
-
-          ones++
-          if (ones > 9) {
-            ones = 0
-            tens++
-          }
-
-          if (tens > 9) {
-            tens = 0
-            hundrands++
-          }
-
-          if (hundrands > 9) {
-            hundrands = 0
-            thousands++
-          }
-
-          if (thousands > 9) {
-            thousands = 0
-            hundrands = 0
-            tens = 0
-            ones = 0
-          }
-
-          digits = listOf(thousands, hundrands, tens, ones)
-        }
-
-        is Reset -> TODO()
+      when (event) {
+        Increase -> count++
+        is Reset -> count = 0
       }
     }
   }
 
   return TallyState(
-    display = digits.joinToString("")
+    thousands = (count % 10000) / 1000,
+    hundreds = (count % 1000) / 100,
+    tens = (count % 100) / 10,
+    ones = (count % 10) / 1,
   )
 }

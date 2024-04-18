@@ -8,7 +8,6 @@ import io.github.xxfast.counter.tally.TallyEvents
 import io.github.xxfast.counter.tally.TallyEvents.Increase
 import io.github.xxfast.counter.tally.TallyState
 import io.github.xxfast.counter.utils.EventsFlow
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -21,14 +20,14 @@ class TallyTest {
     moleculeFlow(RecompositionMode.Immediate) { TallyDomain(events) }
       .test {
         assertEquals(
-          expected = TallyState("0000"),
+          expected = TallyState(0, 0, 0, 0),
           actual = awaitItem()
         )
 
         events.emit(Increase)
 
         assertEquals(
-          expected = TallyState("0001"),
+          expected = TallyState(0, 0, 0, 1),
           actual = awaitItem()
         )
       }
@@ -37,10 +36,9 @@ class TallyTest {
   @Test
   fun `Test ones rollover`() = runTest {
     moleculeFlow(RecompositionMode.Immediate) { TallyDomain(events) }
-      .onEach { println(it) }
       .test {
         assertEquals(
-          expected = TallyState("0000"),
+          expected = TallyState(0, 0, 0, 0),
           actual = awaitItem()
         )
 
@@ -51,7 +49,7 @@ class TallyTest {
 
         events.emit(Increase)
         assertEquals(
-          expected = TallyState("0010"),
+          expected = TallyState(0, 0, 1, 0),
           actual = awaitItem()
         )
       }
@@ -60,10 +58,9 @@ class TallyTest {
   @Test
   fun `Test tens rollover`() = runTest {
     moleculeFlow(RecompositionMode.Immediate) { TallyDomain(events) }
-      .onEach { println(it) }
       .test {
         assertEquals(
-          expected = TallyState("0000"),
+          expected = TallyState(0, 0, 0, 0),
           actual = awaitItem()
         )
 
@@ -74,7 +71,7 @@ class TallyTest {
 
         events.emit(Increase)
         assertEquals(
-          expected = TallyState("0100"),
+          expected = TallyState(0, 1, 0, 0),
           actual = awaitItem()
         )
       }
@@ -83,10 +80,9 @@ class TallyTest {
   @Test
   fun `Test hundreds rollover`() = runTest {
     moleculeFlow(RecompositionMode.Immediate) { TallyDomain(events) }
-      .onEach { println(it) }
       .test {
         assertEquals(
-          expected = TallyState("0000"),
+          expected = TallyState(0, 0, 0, 0),
           actual = awaitItem()
         )
 
@@ -97,7 +93,7 @@ class TallyTest {
 
         events.emit(Increase)
         assertEquals(
-          expected = TallyState("1000"),
+          expected = TallyState(1, 0, 0, 0),
           actual = awaitItem()
         )
       }
@@ -106,10 +102,9 @@ class TallyTest {
   @Test
   fun `Test thousands rollover`() = runTest {
     moleculeFlow(RecompositionMode.Immediate) { TallyDomain(events) }
-      .onEach { println(it) }
       .test {
         assertEquals(
-          expected = TallyState("0000"),
+          expected = TallyState(0, 0, 0, 0),
           actual = awaitItem()
         )
 
@@ -120,7 +115,7 @@ class TallyTest {
 
         events.emit(Increase)
         assertEquals(
-          expected = TallyState("0000"),
+          expected = TallyState(0, 0, 0, 0),
           actual = awaitItem()
         )
       }
