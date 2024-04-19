@@ -14,6 +14,8 @@
 		DBBAFFE12BD157B20091629C /* TallyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAFFE02BD157B20091629C /* TallyScreen.swift */; };
 		DBBAFFE42BD1583D0091629C /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAFFE32BD1583D0091629C /* TimerViewModel.swift */; };
 		DBBAFFE72BD159940091629C /* TallyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAFFE62BD159940091629C /* TallyViewModel.swift */; };
+		DBBAFFE92BD325350091629C /* FactsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAFFE82BD325350091629C /* FactsScreen.swift */; };
+		DBBAFFEC2BD328BB0091629C /* FactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAFFEB2BD328BB0091629C /* FactsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +41,8 @@
 		DBBAFFE02BD157B20091629C /* TallyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyScreen.swift; sourceTree = "<group>"; };
 		DBBAFFE32BD1583D0091629C /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		DBBAFFE62BD159940091629C /* TallyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyViewModel.swift; sourceTree = "<group>"; };
+		DBBAFFE82BD325350091629C /* FactsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsScreen.swift; sourceTree = "<group>"; };
+		DBBAFFEB2BD328BB0091629C /* FactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		DB0365AC2BC426E400840BCF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				DBBAFFEA2BD3253A0091629C /* Facts */,
 				DBBAFFE52BD1597F0091629C /* Tally */,
 				DBBAFFE22BD157C80091629C /* Timer */,
 			);
@@ -121,6 +126,15 @@
 				DBBAFFE62BD159940091629C /* TallyViewModel.swift */,
 			);
 			path = Tally;
+			sourceTree = "<group>";
+		};
+		DBBAFFEA2BD3253A0091629C /* Facts */ = {
+			isa = PBXGroup;
+			children = (
+				DBBAFFE82BD325350091629C /* FactsScreen.swift */,
+				DBBAFFEB2BD328BB0091629C /* FactsViewModel.swift */,
+			);
+			path = Facts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +234,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBBAFFE42BD1583D0091629C /* TimerViewModel.swift in Sources */,
+				DBBAFFE92BD325350091629C /* FactsScreen.swift in Sources */,
+				DBBAFFEC2BD328BB0091629C /* FactsViewModel.swift in Sources */,
 				DBBAFFE12BD157B20091629C /* TallyScreen.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				DB0365AE2BC426F800840BCF /* TimerScreen.swift in Sources */,

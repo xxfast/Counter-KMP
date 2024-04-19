@@ -28,6 +28,9 @@ kotlin {
   sourceSets {
     commonMain.dependencies {
       implementation(libs.kotlinx.datetime)
+      implementation(libs.ktor.client)
+      implementation(libs.ktor.client.cio)
+      implementation(libs.ktor.client.logging)
     }
 
     commonTest.dependencies {

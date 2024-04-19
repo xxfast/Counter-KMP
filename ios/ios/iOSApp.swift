@@ -8,6 +8,7 @@ struct iOSApp: App {
         List {
           TimerScreen()
           TallyScreen()
+          FactsScreen()
         }
         .navigationTitle("Counter-KMP")
       }
