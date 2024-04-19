@@ -39,11 +39,14 @@ android {
 }
 
 dependencies {
-  implementation(projects.counter)
+  implementation(libs.androidx.activity.compose)
+  implementation(libs.compose.material3)
   implementation(libs.compose.ui)
   implementation(libs.compose.ui.tooling.preview)
-  implementation(libs.compose.material3)
-  implementation(libs.androidx.activity.compose)
+  implementation(libs.ktor.client)
+  implementation(libs.ktor.client.cio)
+  implementation(libs.ktor.client.logging)
   implementation(libs.molecule.runtime)
+  implementation(projects.counter)
   debugImplementation(libs.compose.ui.tooling)
 }
