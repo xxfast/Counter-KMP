@@ -26,7 +26,7 @@ sealed interface FactEvents {
 @Composable
 fun FactsDomain(
   events: EventsFlow<FactEvents>,
-  api: FactsApi
+  service: FactsWebService
 ): FactsState {
   var state: FactsState by remember { mutableStateOf(Loading) }
   var refrehes: Int by remember { mutableStateOf(0) }
@@ -41,7 +41,8 @@ fun FactsDomain(
 
   LaunchedEffect(refrehes){
     state = Loading
-    val result: Result<String> = api.getRandomFact(Random.nextInt(100))
+    val random: Int = Random.nextInt(100)
+    val result: Result<String> = service.getRandomFact(random)
 
     if (result.isFailure) {
       state = FactsState.Failed

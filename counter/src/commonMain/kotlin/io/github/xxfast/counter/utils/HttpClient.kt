@@ -22,6 +22,8 @@ val client: HttpClient = HttpClient {
     level = LogLevel.ALL
     sanitizeHeader { header -> header == HttpHeaders.Authorization }
   }
+
+  expectSuccess = true
 }
 
 suspend inline fun <reified T> HttpClient.get(

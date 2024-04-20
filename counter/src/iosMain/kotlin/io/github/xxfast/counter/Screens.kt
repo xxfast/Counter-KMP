@@ -4,7 +4,7 @@ import io.github.xxfast.counter.screens.facts.FactEvents
 import io.github.xxfast.counter.screens.facts.FactEvents.Refresh
 import io.github.xxfast.counter.screens.facts.FactsState
 import io.github.xxfast.counter.screens.facts.FactsDomain
-import io.github.xxfast.counter.screens.facts.FactsService
+import io.github.xxfast.counter.screens.facts.FactsWebService
 import io.github.xxfast.counter.screens.timer.TimerDomain
 import io.github.xxfast.counter.screens.timer.TimerState
 import io.github.xxfast.counter.tally.TallyDomain
@@ -28,7 +28,7 @@ class TallyDomain(
 
 class FactsDomain(
   private val events: EventsFlow<FactEvents>
-) : ViewModel<FactsState>({ FactsDomain(events = events, api = FactsService()) }) {
+) : ViewModel<FactsState>({ FactsDomain(events = events, service = FactsWebService()) }) {
   constructor() : this(EventsFlow())
   fun onRefresh() = launch { events.emit(Refresh) }
 }

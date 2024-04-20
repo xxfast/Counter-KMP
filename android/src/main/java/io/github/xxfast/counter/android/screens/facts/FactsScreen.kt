@@ -30,9 +30,8 @@ import io.github.xxfast.counter.screens.facts.FactsState
 import io.github.xxfast.counter.screens.facts.FactsState.Failed
 import io.github.xxfast.counter.screens.facts.FactsState.Loading
 import io.github.xxfast.counter.screens.facts.FactsState.Success
-import io.github.xxfast.counter.screens.facts.FactsApi
 import io.github.xxfast.counter.screens.facts.FactsDomain
-import io.github.xxfast.counter.screens.facts.FactsService
+import io.github.xxfast.counter.screens.facts.FactsWebService
 import io.github.xxfast.counter.utils.EventsFlow
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.StateFlow
@@ -41,11 +40,11 @@ import kotlinx.coroutines.launch
 @Composable
 fun FactsScreen() {
   val coroutineScope: CoroutineScope = rememberCoroutineScope()
-  val api: FactsApi = remember { FactsService() }
+  val service: FactsWebService = remember { FactsWebService() }
   val events: EventsFlow<FactEvents> = remember { EventsFlow() }
 
   val stateFlow: StateFlow<FactsState> = remember {
-    coroutineScope.launchMolecule(ContextClock) { FactsDomain(events, api) }
+    coroutineScope.launchMolecule(ContextClock) { FactsDomain(events, service) }
   }
 
   val state: FactsState by stateFlow.collectAsState()
