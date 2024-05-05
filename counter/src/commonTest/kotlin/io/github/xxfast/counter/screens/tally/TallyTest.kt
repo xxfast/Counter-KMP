@@ -3,10 +3,10 @@ package io.github.xxfast.counter.screens.tally
 import app.cash.molecule.RecompositionMode
 import app.cash.molecule.moleculeFlow
 import app.cash.turbine.test
-import io.github.xxfast.counter.tally.TallyDomain
-import io.github.xxfast.counter.tally.TallyEvents
-import io.github.xxfast.counter.tally.TallyEvents.Increase
-import io.github.xxfast.counter.tally.TallyState
+import io.github.xxfast.counter.screens.tally.TallyDomain
+import io.github.xxfast.counter.screens.tally.TallyEvents
+import io.github.xxfast.counter.screens.tally.TallyEvents.Increase
+import io.github.xxfast.counter.screens.tally.TallyState
 import io.github.xxfast.counter.utils.EventsFlow
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

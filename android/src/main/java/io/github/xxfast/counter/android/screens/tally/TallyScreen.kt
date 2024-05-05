@@ -32,11 +32,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.cash.molecule.RecompositionMode
 import app.cash.molecule.launchMolecule
-import io.github.xxfast.counter.tally.TallyDomain
-import io.github.xxfast.counter.tally.TallyEvents
-import io.github.xxfast.counter.tally.TallyEvents.Increase
-import io.github.xxfast.counter.tally.TallyEvents.Reset
-import io.github.xxfast.counter.tally.TallyState
+import io.github.xxfast.counter.screens.tally.TallyDomain
+import io.github.xxfast.counter.screens.tally.TallyEvents
+import io.github.xxfast.counter.screens.tally.TallyEvents.Increase
+import io.github.xxfast.counter.screens.tally.TallyEvents.Reset
+import io.github.xxfast.counter.screens.tally.TallyState
 import io.github.xxfast.counter.utils.EventsFlow
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.StateFlow

@@ -1,4 +1,4 @@
-package io.github.xxfast.counter.tally
+package io.github.xxfast.counter.screens.tally
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -6,8 +6,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import io.github.xxfast.counter.tally.TallyEvents.Increase
-import io.github.xxfast.counter.tally.TallyEvents.Reset
+import io.github.xxfast.counter.screens.tally.TallyEvents.Increase
+import io.github.xxfast.counter.screens.tally.TallyEvents.Reset
 import io.github.xxfast.counter.utils.EventsFlow
 
 data class TallyState(

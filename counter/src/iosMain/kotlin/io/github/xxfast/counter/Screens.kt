@@ -7,11 +7,11 @@ import io.github.xxfast.counter.screens.facts.FactsDomain
 import io.github.xxfast.counter.screens.facts.FactsWebService
 import io.github.xxfast.counter.screens.timer.TimerDomain
 import io.github.xxfast.counter.screens.timer.TimerState
-import io.github.xxfast.counter.tally.TallyDomain
-import io.github.xxfast.counter.tally.TallyEvents
-import io.github.xxfast.counter.tally.TallyEvents.Increase
-import io.github.xxfast.counter.tally.TallyEvents.Reset
-import io.github.xxfast.counter.tally.TallyState
+import io.github.xxfast.counter.screens.tally.TallyDomain
+import io.github.xxfast.counter.screens.tally.TallyEvents
+import io.github.xxfast.counter.screens.tally.TallyEvents.Increase
+import io.github.xxfast.counter.screens.tally.TallyEvents.Reset
+import io.github.xxfast.counter.screens.tally.TallyState
 import io.github.xxfast.counter.utils.EventsFlow
 import io.github.xxfast.counter.utils.ViewModel
 import kotlinx.coroutines.launch
